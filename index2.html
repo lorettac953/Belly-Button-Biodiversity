@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>BB Dashboard</title>
+
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+
+    <link rel="stylesheet" href="/static/styles.css">
+
+</head>
+
+
+
+<body>
+
+    <div class="container">
+
+
+
+
+
+        <div class="span6" style="float: none; margin: 0 auto;">
+
+            <div class="jumbotron container">
+
+                <h5 class="display-3">Belly Button Biodiversity Dashboard</h5>
+
+                <p class="lead">
+
+                    Belly button germs: What's living in your navel?!
+
+                </p>
+
+                <hr class="my-4">
+
+                <p>By: Naser Erwemi | Univ. of Texas at Austin | Data Analytics and Visualization Program</p>
+
+                <div class="textwidget">
+
+                    <div class="row justify-content-center">
+
+                        <a href="https://www.linkedin.com/in/aerwemi/" target="_blank">
+
+
+
+                            <img class='lnk' src="static/img/ln.jpg">
+
+                        </a>
+
+                        <a href="https://github.com/aerwemi" target="_blank">
+
+
+
+                            <img class='lnk' src="static/img/git.png">
+
+                        </a>
+
+                        <a href="https://github.com/aerwemi/Belly-Button-Biodiversity-Dashboard" target="_blank">
+
+                            <button type="button" class="btn btn-outline-dark">Learn More!</button>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <p id="date"></p>
+
+            </div>
+
+            <div class=" jumbotron span6" style="float: none; margin: 0 auto;">
+
+                <div class="row">
+
+                    <div class="col-md-3">
+
+                        <h4>Select Sample:</h4>
+
+                        <select class="row" id="selDataset"></select>
+
+                        <table class="table table-bordered">
+
+                            <tbody></tbody>
+
+                        </table>
+
+                    </div>
+
+                    <div class="col-md-9">
+
+                        <div id="plot1"></div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="row justify-content-around">
+
+                        <div id="plot2"></div>
+
+                </div>
+
+
+
+                <div class="row justify-content-around">
+
+                    <div class="col-md-6">
+
+                        <div id="plot4"></div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div id="plot3"></div>
+
+
+
+                    </div>
+
+                </div>
+
+
+
+
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <!-- <script src="/static/js/app.js"></script> -->
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+
+
+
+
+
+
+</body>
+
+
+
+</html>
