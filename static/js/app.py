@@ -31,8 +31,8 @@ app = Flask(__name__)
 def names():
 
     # data load from csv file - pandas
-
-    biodiversity_samples = pd.read_csv('data/belly_button_biodiversity_samples.csv', index_col=0)
+'
+    biodiversity_samples = pd.read_json('data/samples.json, index_col=0)
 
     names_list=biodiversity_samples.columns.tolist()
 
@@ -46,7 +46,7 @@ def otu():
 
     # data load from csv file - pandas
 
-    biodiversity_otu = pd.read_csv('data/belly_button_biodiversity_otu_id.csv', index_col=0)
+    biodiversity_otu = pd.read_json('data/samples.json', index_col=0)
 
     otu_list = biodiversity_otu['lowest_taxonomic_unit_found'].tolist()
 
@@ -58,27 +58,27 @@ def otu():
 
 def metadata(id):
 
-    # data load from csv file - pandas
+    # data load from json file - pandas
 
-    meta_data = pd.read_csv('data/Belly_Button_Biodiversity_Metadata.csv')
+    meta_data = pd.read_json('data/samples.json')
 
-    meta_data = meta_data[['AGE', 'BBTYPE', 'ETHNICITY', 'GENDER', 'LOCATION', 'SAMPLEID']]
+    meta_data = meta_data[['age', 'bbtype', 'ethnicity', 'gender', 'location', 'id']]
 
-    meta_data['ETHNICITY'].fillna(value="Unidentified", inplace=True)
+    meta_data['ethnicity'].fillna(value="Unidentified", inplace=True)
 
-    meta_data['LOCATION'].fillna(value="Unidentified", inplace=True)
+    meta_data['location'].fillna(value="Unidentified", inplace=True)
 
-    meta_data['GENDER'].fillna(value="Unidentified", inplace=True)
+    meta_data['gender'].fillna(value="Unidentified", inplace=True)
 
-    meta_data['BBTYPE'].fillna(value="Unknown", inplace=True)
+    meta_data['bbtype'].fillna(value="Unknown", inplace=True)
 
-    meta_data['AGE'].fillna(value=0, inplace=True)
+    meta_data['age'].fillna(value=0, inplace=True)
 
-    meta_data['AGE'].fillna(value=0, inplace=True)
+    meta_data['age'].fillna(value=0, inplace=True)
 
     
 
-    meta_data['ID'] = 'BB_' + meta_data['SAMPLEID'].astype(str)
+    meta_data['ID'] = 'bb_' + meta_data['id'].astype(str)
 
     meta_data = meta_data.set_index('ID').to_dict('index')
 
@@ -106,13 +106,13 @@ def WFREQval(id):
 
     import pandas as pd
 
-    WFREQ = pd.read_csv('data/Belly_Button_Biodiversity_Metadata.csv')
+    WFREQ = pd.read_json('data/samples.json')
 
-    WFREQ = WFREQ[['SAMPLEID', 'WFREQ']]
+    WFREQ = WFREQ[['id', 'WFREQ']]
 
     WFREQ['WFREQ'].fillna(value=0, inplace=True)
 
-    WFREQ['ID'] = 'BB_' + WFREQ['SAMPLEID'].astype(str)
+    WFREQ['ID'] = 'bb_' + WFREQ['id'].astype(str)
 
     WFREQ = WFREQ.drop(['SAMPLEID'], axis=1)
 
@@ -132,11 +132,11 @@ def wfreq(id):
 
     # data load from csv file - pandas
 
-    meta_data = pd.read_csv('data/Belly_Button_Biodiversity_Metadata.csv')
+    meta_data = pd.read_json('data/samples.json')
 
     meta_data = meta_data[['WFREQ', 'SAMPLEID']]
 
-    meta_data['ID'] = 'BB_' + meta_data['SAMPLEID'].astype(str)
+    meta_data['ID'] = 'bb_' + meta_data['id'].astype(str)
 
     meta_data = meta_data.set_index('ID').drop(['SAMPLEID'], axis=1).to_dict('index')
 
@@ -154,7 +154,7 @@ def samples(id):
 
     # data load from csv file - pandas
 
-    biodiversity_samples = pd.read_csv('data/belly_button_biodiversity_samples.csv')
+    biodiversity_samples = pd.read_json('data/samples.json')
 
     biodiversity_samples = biodiversity_samples[['otu_id',id]].sort_values(id, ascending=0)
 
@@ -182,7 +182,7 @@ def samples2(id):
 
     # data load from csv file - pandas
 
-    biodiversity_samples = pd.read_csv('data/belly_button_biodiversity_samples.csv')
+    biodiversity_samples = pd.read_json('data/samples.json')
 
     biodiversity_samples = biodiversity_samples[['otu_id',id]].sort_values(id, ascending=0)
 
@@ -208,7 +208,7 @@ def samples3(id):
 
     # data load from csv file - pandas
 
-    df = pd.read_csv('data/belly_button_biodiversity_samples.csv').drop(['otu_id'], axis=1).T
+    df = pd.read_json('data/samples.json').drop(['otu_id'], axis=1).T
 
     df['sum'] = df.sum(axis=1)
 
